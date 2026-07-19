@@ -62,3 +62,64 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem('tipoUsuario', tipo);
     }
 });
+
+let correoRecuperacion = "";
+
+document.getElementById('btnOlvide').addEventListener('click', (e) => {
+    e.preventDefault(); 
+    document.querySelector('.login-header h2').textContent = "Recuperar Acceso";
+    document.querySelector('.login-header p').style.display = "none";
+    document.getElementById('vista-login').style.display = 'none';
+    document.getElementById('vista-recuperacion').style.display = 'block';
+});
+
+document.getElementById('btnVolverLogin').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.login-header h2').textContent = "Iniciar sesión";
+    document.querySelector('.login-header p').style.display = "block";
+    document.getElementById('vista-recuperacion').style.display = 'none';
+    document.getElementById('vista-login').style.display = 'block';
+    
+    document.getElementById('paso1').style.display = 'block';
+    document.getElementById('paso2').style.display = 'none';
+    document.getElementById('paso3').style.display = 'none';
+});
+
+async function solicitarCodigo() {
+    correoRecuperacion = document.getElementById('correoRecup').value;
+    const res = await fetch('/auth/solicitar-codigo', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ correo: correoRecuperacion, tabla: 'alumnos' }) // Ajusta la tabla si es admin
+    });
+    if (res.ok) {
+        document.getElementById('paso1').style.display = 'none';
+        document.getElementById('paso2').style.display = 'block';
+    }
+}
+
+async function verificarCodigo() {
+    const token = document.getElementById('codigoVerif').value;
+    const res = await fetch('/auth/verificar-codigo', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ correo: correoRecuperacion, token })
+    });
+    if (res.ok) {
+        document.getElementById('paso2').style.display = 'none';
+        document.getElementById('paso3').style.display = 'block';
+    } else alert("Código inválido");
+}
+
+async function actualizarPassword() {
+    const nuevaPass = document.getElementById('nuevaPass').value;
+    const res = await fetch('/auth/actualizar-password', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ correo: correoRecuperacion, nuevaPass, tabla: 'alumnos' })
+    });
+    if (res.ok) {
+        alert("Contraseña actualizada correctamente");
+        location.reload();
+    }
+}

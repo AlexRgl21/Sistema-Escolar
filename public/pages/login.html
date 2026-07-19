@@ -17,19 +17,62 @@
             <p>Ingresa tus credenciales para continuar</p>
         </div>
         
-        <form id="form-login">
-            <div class="input-group">
-                <label for="correo">Correo Electrónico</label>
-                <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
-            </div>
+        <div id="vista-login">
+            <form id="form-login">
+                <div class="input-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
+                </div>
+                
+                <div class="input-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" required placeholder="********">
+                </div>
+                
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
             
-            <div class="input-group">
-                <label for="contrasena">Contraseña</label>
-                <input type="password" id="contrasena" name="contrasena" required placeholder="********">
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" id="btnOlvide" style="color: #107078; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: color 0.3s;">¿Olvidaste tu contraseña?</a>
             </div>
+        </div>
+
+        <div id="vista-recuperacion" style="display: none;">
             
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
-        </form>
+            <div id="paso1">
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">Ingresa tu correo para recibir un código de 6 dígitos.</p>
+                <div class="input-group">
+                    <label for="correoRecup">Correo Electrónico</label>
+                    <input type="email" id="correoRecup" placeholder="ejemplo@correo.com">
+                </div>
+                <button type="button" class="btn-login" onclick="solicitarCodigo()">Enviar código</button>
+            </div>
+
+            <div id="paso2" style="display:none;">
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">Revisa tu bandeja de entrada e ingresa el código.</p>
+                <div class="input-group">
+                    <label for="codigoVerif">Código de verificación</label>
+                    <input type="text" id="codigoVerif" placeholder="123456" style="text-align: center; letter-spacing: 5px; font-weight: bold;">
+                </div>
+                <button type="button" class="btn-login" onclick="verificarCodigo()">Verificar código</button>
+            </div>
+
+            <div id="paso3" style="display:none;">
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">Crea tu nueva contraseña de acceso.</p>
+                <div class="input-group">
+                    <label for="nuevaPass">Nueva contraseña</label>
+                    <input type="password" id="nuevaPass" placeholder="Nueva contraseña">
+                </div>
+                <button type="button" class="btn-login" onclick="actualizarPassword()">Guardar contraseña</button>
+            </div>
+
+            <!-- Botón para regresar al login -->
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" id="btnVolverLogin" style="color: #666; text-decoration: none; font-weight: 600; font-size: 0.9em;">← Volver al inicio de sesión</a>
+            </div>
+        </div>
+
+        <div id="mensaje-error" class="mensaje-error"></div>
 
         <div id="mensaje-error" class="mensaje-error"></div>
     </div>
