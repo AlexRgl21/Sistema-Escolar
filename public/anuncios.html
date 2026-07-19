@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Gestión de Alumnos</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="navbar-link">Alumnos</a>
+            <a href="administradores.html" class="navbar-link">Administradores</a>
+            <a href="periodos.html" class="navbar-link">Periodos</a>
+            <a href="materias.html" class="navbar-link">Materias</a>
+            <a href="anuncios.html" class="navbar-link is-active">Anuncios</a>
+            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="login-container">
+
+            <div class="login-header">
+                <h2>Anuncios</h2>
+                <p>Publicar un anuncio nuevo para los alumnos</p>
+            </div>
+
+            <form id="formAnuncio">
+
+                <div class="input-group">
+                    <label for="titulo">Título</label>
+                    <input
+                        type="text"
+                        id="titulo"
+                        placeholder="Ej. Suspensión de clases"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="contenido">Contenido</label>
+                    <textarea
+                        id="contenido"
+                        rows="4"
+                        placeholder="Escribe aquí el anuncio para los alumnos..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Publicar
+                </button>
+
+                <div id="mensajeError" class="mensaje-error">
+                    Hubo un error al procesar la solicitud, intente de nuevo
+                </div>
+
+            </form>
+        </div>
+
+        <div class="lista-section">
+
+            <div class="lista-header">
+                <h2 class="lista-titulo">Anuncios publicados</h2>
+
+                <div class="buscador">
+                    <span class="buscador-icono">🔍</span>
+                    <input
+                        type="text"
+                        id="buscarIdAnuncio"
+                        class="buscador-input"
+                        placeholder="Buscar por ID..."
+                        inputmode="numeric"
+                        autocomplete="off"
+                    >
+                    <button type="button" id="btnLimpiarBusquedaAnuncio" class="buscador-limpiar" hidden aria-label="Limpiar búsqueda">✕</button>
+                </div>
+            </div>
+
+            <div id="listaAnuncios"></div>
+
+            <p id="sinResultadosBusquedaAnuncio" class="sin-resultados" hidden>
+                No se encontró ningún anuncio con ese ID.
+            </p>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="anuncios.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Administrador · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Gestión de Alumnos</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="navbar-link">Alumnos</a>
+            <a href="administradores.html" class="navbar-link is-active">Administradores</a>
+            <a href="periodos.html" class="navbar-link">Periodos</a>
+            <a href="materias.html" class="navbar-link">Materias</a>
+            <a href="anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="detalle-card">
+
+            <a href="administradores.html" class="volver-link">← Volver a la lista</a>
+
+            <div id="estadoCarga" class="detalle-cargando">Cargando información del administrador…</div>
+
+            <div id="estadoNoEncontrado" class="detalle-error" hidden>
+                No se encontró ningún administrador con ese ID.
+            </div>
+
+            <div id="contenidoAdministrador" hidden>
+
+                <p class="detalle-id">ID de administrador: <span id="idAdminTexto"></span></p>
+                <h2 id="tituloAdmin" class="detalle-nombre"></h2>
+                <p class="detalle-correo">
+                    <span id="correoAdmin"></span>
+                    &nbsp;·&nbsp;
+                    <span id="badgeEstatusAdmin" class="badge"></span>
+                </p>
+
+                <h3 class="detalle-subtitulo">Datos del administrador</h3>
+
+                <form id="formEditarAdmin">
+
+                    <div class="input-group">
+                        <label for="editNombre">Nombre</label>
+                        <input type="text" id="editNombre" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editApellidos">Apellidos</label>
+                        <input type="text" id="editApellidos" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editCorreo">Correo Electrónico</label>
+                        <input type="text" id="editCorreo" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editContrasena">Contraseña</label>
+                        <input type="text" id="editContrasena" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editEstatus">Estatus</label>
+                        <select id="editEstatus" required>
+                            <option value="" disabled>Selecciona un estatus</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editIdRolTexto">Rol</label>
+                        <input type="text" id="editIdRolTexto" value="Administrador" readonly disabled>
+                        <input type="hidden" id="editIdRol" value="2">
+                    </div>
+
+                    <div class="form-acciones">
+                        <button type="submit" class="btn-guardar">Guardar cambios</button>
+                    </div>
+
+                    <div id="mensajeGuardado" class="mensaje-exito"></div>
+                    <div id="mensajeErrorEdit" class="mensaje-error"></div>
+
+                </form>
+
+                <div class="zona-peligro">
+                    <div>
+                        <strong>Eliminar administrador</strong>
+                        <p>Esta acción no se puede deshacer.</p>
+                    </div>
+                    <button type="button" id="btnEliminar" class="btn-eliminar">Eliminar administrador</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="administrador.js"></script>
+
+</body>
+</html>

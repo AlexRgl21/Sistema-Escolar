@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administradores · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Gestión de Alumnos</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="navbar-link">Alumnos</a>
+            <a href="administradores.html" class="navbar-link is-active">Administradores</a>
+            <a href="periodos.html" class="navbar-link">Periodos</a>
+            <a href="materias.html" class="navbar-link">Materias</a>
+            <a href="anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="login-container">
+
+            <div class="login-header">
+                <h2>Administradores</h2>
+                <p>Registrar un nuevo administrador</p>
+            </div>
+
+            <form id="formAdministrador">
+
+                <div class="input-group">
+                    <label for="nombre">Nombre</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Nombre"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input
+                        type="text"
+                        id="apellidos"
+                        placeholder="Apellidos"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input
+                        type="text"
+                        id="correo"
+                        placeholder="ejemplo@correo.com"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input
+                        type="text"
+                        id="contrasena"
+                        placeholder="Introduce la contraseña"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="estatus">Estatus</label>
+                    <select id="estatus" required>
+                        <option value="" disabled selected>Selecciona un estatus</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="id_rolTexto">Rol</label>
+                    <input type="text" id="id_rolTexto" value="Administrador" readonly disabled>
+                    <input type="hidden" id="id_rol" value="2">
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Guardar
+                </button>
+
+                <div id="mensajeError" class="mensaje-error">
+                    Hubo un error al procesar la solicitud, intente de nuevo
+                </div>
+
+            </form>
+        </div>
+
+        <div class="lista-section">
+
+            <div class="lista-header">
+                <h2 class="lista-titulo">Lista de Administradores</h2>
+
+                <div class="buscador">
+                    <span class="buscador-icono">🔍</span>
+                    <input
+                        type="text"
+                        id="buscarIdAdmin"
+                        class="buscador-input"
+                        placeholder="Buscar por ID..."
+                        inputmode="numeric"
+                        autocomplete="off"
+                    >
+                    <button type="button" id="btnLimpiarBusquedaAdmin" class="buscador-limpiar" hidden aria-label="Limpiar búsqueda">✕</button>
+                </div>
+            </div>
+
+            <div id="listaAdministradores"></div>
+
+            <p id="sinResultadosBusquedaAdmin" class="sin-resultados" hidden>
+                No se encontró ningún administrador con ese ID.
+            </p>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="administradores.js"></script>
+
+</body>
+</html>

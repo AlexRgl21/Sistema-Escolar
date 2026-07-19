@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Trámites · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Portal del Alumno</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="portal-alumno.html" class="navbar-link">Inicio</a>
+            <a href="portal-materias.html" class="navbar-link">Mis materias</a>
+            <a href="portal-datos.html" class="navbar-link">Mis datos</a>
+            <a href="portal-anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="portal-tramites.html" class="navbar-link is-active">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="login-container">
+
+            <div class="login-header">
+                <h2>Solicitar un trámite</h2>
+                <p>Elige el tipo de trámite y describe lo que necesitas</p>
+            </div>
+
+            <form id="formTramite">
+
+                <div class="input-group">
+                    <label for="tipo_tramite">Tipo de trámite</label>
+                    <select id="tipo_tramite" required>
+                        <option value="" disabled selected>Selecciona un tipo</option>
+                        <option value="Constancia de estudios">Constancia de estudios</option>
+                        <option value="Kardex">Kardex</option>
+                        <option value="Cambio de grupo">Cambio de grupo</option>
+                        <option value="Baja de materia">Baja de materia</option>
+                        <option value="Revisión de examen">Revisión de examen</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea
+                        id="descripcion"
+                        rows="4"
+                        placeholder="Cuéntanos con más detalle qué necesitas..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Enviar solicitud
+                </button>
+
+                <div id="mensajeExito" class="mensaje-exito"></div>
+
+                <div id="mensajeError" class="mensaje-error">
+                    Hubo un error al procesar la solicitud, intente de nuevo
+                </div>
+
+            </form>
+        </div>
+
+        <div class="lista-section">
+
+            <div class="lista-header">
+                <h2 class="lista-titulo">Mis trámites</h2>
+            </div>
+
+            <div id="estadoCargaTramites" class="detalle-cargando">Cargando tus trámites…</div>
+
+            <div id="tramitesContenido"></div>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="portal-common.js"></script>
+    <script src="portal-tramites.js"></script>
+
+</body>
+</html>

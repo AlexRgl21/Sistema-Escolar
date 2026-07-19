@@ -1,0 +1,988 @@
+/* =====================================
+   VARIABLES DE COLOR Y TIPOGRAFÍA
+   Paleta extraída directamente del logo:
+   teal del icono/texto, azul del círculo,
+   verde de las páginas del libro.
+   ===================================== */
+:root {
+    --primary-color: #107078;
+    --primary-dark: #0B4E54;
+    --accent-blue: #0098D8;
+    --accent-green: #4CAF6E;
+
+    --bg-color: #F1F8F8;
+    --text-dark: #1E3A3D;
+    --text-light: #5C7A7D;
+    --border-color: #D9E8E8;
+
+    --success-bg: #D3EDDC;
+    --success-text: #2F7248;
+    --danger-bg: #FEE2E2;
+    --danger-text: #B91C1C;
+
+    --brand-gradient: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-blue) 55%, var(--accent-green) 100%);
+
+    --font-display: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3, .navbar-brand span, .btn-login, .btn-detalle, .btn-guardar, .btn-eliminar {
+    font-family: var(--font-display);
+}
+
+/* =====================================
+   PANTALLA DE LOGIN
+   ===================================== */
+.login-body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(16, 112, 120, 0.12);
+    width: 100%;
+    max-width: 380px;
+    border-top: 5px solid transparent;
+    border-image: var(--brand-gradient) 1;
+    box-sizing: border-box;
+}
+
+.login-logo {
+    display: block;
+    max-width: 130px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 16px auto;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header h2 {
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.login-header p {
+    color: var(--text-light);
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+/* Estilos de los inputs (login, alta de alumno y edición) */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background-color: #fff;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.input-group select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(16, 112, 120, 0.12);
+}
+
+.input-group input:disabled,
+.input-group input[readonly] {
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    cursor: not-allowed;
+}
+
+/* Botón principal */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Mensajes de error / éxito */
+.mensaje-error {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    display: none;
+}
+
+.mensaje-exito {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    display: none;
+}
+
+
+/* =====================================
+   LISTAS EN TARJETAS (alumnos, administradores, periodos)
+   ===================================== */
+#listaEntrenadores,
+#listaAdministradores,
+#listaPeriodos,
+#listaMaterias,
+.lista-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(16, 112, 120, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card p {
+    color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+    #listaEntrenadores,
+    #listaAdministradores,
+    #listaPeriodos,
+    #listaMaterias {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================
+   LAYOUT GENERAL DE LA APP (index.html, alumno.html)
+   ===================================== */
+.app-body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+/* =====================================
+   MENÚ SUPERIOR (NAVBAR)
+   ===================================== */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 3px solid transparent;
+    border-image: var(--brand-gradient) 1;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(16, 112, 120, 0.05);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.2px;
+}
+
+.navbar-logo {
+    height: 38px;
+    width: auto;
+    display: block;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.navbar-link {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 6px 4px;
+    border-bottom: 2px solid transparent;
+    font-family: var(--font-body);
+}
+
+.navbar-link.is-active {
+    color: var(--primary-color);
+    border-bottom-color: var(--accent-blue);
+}
+
+.navbar-greeting {
+    color: var(--text-light);
+    font-size: 0.85em;
+}
+
+.navbar-logout {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-logout:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.navbar-link:focus-visible,
+.navbar-logout:focus-visible,
+.btn-detalle:focus-visible,
+.buscador-limpiar:focus-visible,
+.btn-guardar:focus-visible,
+.btn-eliminar:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+/* =====================================
+   SECCIÓN "LISTA DE ALUMNOS" + BUSCADOR
+   ===================================== */
+.lista-section {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+}
+
+.lista-section-ancha {
+    margin-top: 0;
+}
+
+.lista-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.lista-titulo {
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.buscador {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    padding: 6px 8px 6px 16px;
+    min-width: 260px;
+}
+
+.buscador-icono {
+    color: var(--text-light);
+    font-size: 0.9em;
+    flex-shrink: 0;
+}
+
+.buscador-input {
+    border: none;
+    outline: none;
+    font-size: 0.95em;
+    font-family: var(--font-body);
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    color: var(--text-dark);
+}
+
+.buscador-limpiar {
+    border: none;
+    background: var(--bg-color);
+    color: var(--text-light);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9em;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.buscador-limpiar:hover {
+    background-color: var(--border-color);
+    color: var(--text-dark);
+}
+
+.buscador-limpiar[hidden] {
+    display: none;
+}
+
+.sin-resultados {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    padding: 30px 0;
+}
+
+.sin-resultados[hidden] {
+    display: none;
+}
+
+/* Botón "Ver detalles" dentro de cada tarjeta (ahora es un enlace a alumno.html) */
+.card-footer {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-detalle {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-detalle:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-agregar-materia {
+    display: inline-block;
+    width: auto;
+    padding: 8px 18px;
+    margin-bottom: 16px;
+}
+
+.acciones-materias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* =====================================
+   PORTAL DEL ALUMNO (dashboard, resumen y accesos)
+   ===================================== */
+.resumen-portal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.resumen-card {
+    flex: 1 1 160px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 18px 20px;
+    text-align: center;
+}
+
+.resumen-numero {
+    display: block;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--font-display);
+}
+
+.resumen-etiqueta {
+    display: block;
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.acciones-portal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.acciones-portal .btn-detalle {
+    flex: 1 1 220px;
+    width: auto;
+}
+
+.datos-solo-lectura {
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* =====================================
+   PANTALLA DE DETALLE / EDICIÓN DE ALUMNO (alumno.html)
+   ===================================== */
+.detalle-card {
+    background-color: #fff;
+    border-radius: 8px;
+    border-top: 5px solid transparent;
+    border-image: var(--brand-gradient) 1;
+    width: 100%;
+    max-width: 720px;
+    padding: 32px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px rgba(16, 112, 120, 0.1);
+}
+
+.volver-link {
+    display: inline-block;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.volver-link:hover {
+    color: var(--primary-color);
+}
+
+.detalle-id {
+    color: var(--text-light);
+    font-size: 0.8em;
+    margin: 0 0 2px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detalle-nombre {
+    margin: 0 0 4px 0;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.detalle-correo {
+    color: var(--text-light);
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+}
+
+.detalle-subtitulo {
+    color: var(--text-dark);
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 28px 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.detalle-subtitulo:first-of-type {
+    margin-top: 4px;
+}
+
+.detalle-vacio {
+    color: var(--text-light);
+    font-style: italic;
+    padding: 16px 0;
+    text-align: center;
+    margin: 0;
+}
+
+.detalle-cargando,
+.detalle-error {
+    text-align: center;
+    color: var(--text-light);
+    padding: 30px 0;
+}
+
+.detalle-error {
+    color: var(--danger-text);
+}
+
+.form-acciones {
+    margin-top: 8px;
+}
+
+.btn-guardar {
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-guardar:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Zona de eliminación, deliberadamente separada del resto del formulario */
+.zona-peligro {
+    margin-top: 30px;
+    padding: 16px 18px;
+    border: 1px solid var(--danger-bg);
+    background-color: #FFFBFB;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.zona-peligro strong {
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.zona-peligro p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.85em;
+    max-width: 380px;
+}
+
+.btn-eliminar {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: var(--danger-text);
+    border: 1px solid var(--danger-text);
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-eliminar:hover {
+    background-color: var(--danger-text);
+    color: #fff;
+}
+
+/* Badges de estatus (Activo / Inactivo) */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.badge-activo {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.badge-inactivo {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.badge-pendiente {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+.badge-proceso {
+    background-color: #DBEAFE;
+    color: #1D4ED8;
+}
+
+/* Cada materia inscrita, con su periodo y calificaciones */
+.materia-item {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+}
+
+.materia-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.materia-nombre {
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.materia-creditos {
+    font-size: 0.8em;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.btn-quitar-materia {
+    border: 1px solid var(--danger-text);
+    background-color: #fff;
+    color: var(--danger-text);
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-quitar-materia:hover {
+    background-color: var(--danger-text);
+    color: #fff;
+}
+
+.materia-periodo {
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.calificaciones-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.nota-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8em;
+    padding: 4px 8px 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+}
+
+.nota-aprobada {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.nota-reprobada {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.nota-sin-registrar {
+    font-size: 0.8em;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Botón "×" para quitar una calificación o una materia de un chip */
+.chip-eliminar {
+    border: none;
+    background: rgba(0, 0, 0, 0.08);
+    color: inherit;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.chip-eliminar:hover {
+    background: rgba(0, 0, 0, 0.18);
+}
+
+/* Mini formulario para capturar una calificación nueva dentro de una materia */
+.form-calificacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.form-calificacion .input-tipo-corte {
+    flex: 1 1 140px;
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+}
+
+.form-calificacion .input-nota {
+    flex: 0 1 80px;
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+}
+
+.btn-agregar-nota {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-agregar-nota:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Alumnos inscritos en un periodo (detalle de periodo) */
+.alumno-inscrito-item {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+}
+
+.alumno-inscrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.alumno-inscrito-nombre {
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.alumno-inscrito-id {
+    font-size: 0.8em;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.alumno-inscrito-detalle {
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.alumno-inscrito-materias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.materia-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8em;
+    padding: 4px 8px 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+}
+
+/* =====================================
+   ANUNCIOS
+   ===================================== */
+.anuncio-item {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+}
+
+.anuncio-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.anuncio-titulo {
+    font-weight: bold;
+    color: var(--text-dark);
+    font-size: 1.05em;
+}
+
+.anuncio-fecha {
+    font-size: 0.78em;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.anuncio-contenido {
+    margin: 8px 0 0;
+    color: var(--text-dark);
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.anuncio-autor {
+    margin: 10px 0 0;
+    font-size: 0.8em;
+    color: var(--text-light);
+}
+
+/* =====================================
+   TRÁMITES
+   ===================================== */
+.tramite-item {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+}
+
+.tramite-respuesta {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.9em;
+    color: var(--text-dark);
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+    .navbar {
+        padding: 10px 16px;
+    }
+
+    .lista-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .buscador {
+        min-width: 0;
+    }
+
+    .detalle-card {
+        padding: 22px 18px;
+    }
+
+    .zona-peligro {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-eliminar {
+        width: 100%;
+    }
+
+    .acciones-materias {
+        flex-direction: column;
+    }
+
+    .btn-agregar-materia {
+        width: 100%;
+        text-align: center;
+    }
+}

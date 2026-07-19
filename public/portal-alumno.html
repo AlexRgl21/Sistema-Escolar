@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Alumno · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Portal del Alumno</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="portal-alumno.html" class="navbar-link is-active">Inicio</a>
+            <a href="portal-materias.html" class="navbar-link">Mis materias</a>
+            <a href="portal-datos.html" class="navbar-link">Mis datos</a>
+            <a href="portal-anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="portal-tramites.html" class="navbar-link">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="detalle-card">
+
+            <h2 id="saludoAlumno" class="detalle-nombre">Bienvenido</h2>
+            <p class="detalle-correo">
+                Este es tu portal. Aquí puedes consultar las materias en las que estás inscrito,
+                tus calificaciones por periodo y actualizar tus datos.
+            </p>
+
+            <div class="resumen-portal">
+                <div class="resumen-card">
+                    <span class="resumen-numero" id="statMaterias">--</span>
+                    <span class="resumen-etiqueta">Materias inscritas</span>
+                </div>
+                <div class="resumen-card">
+                    <span class="resumen-numero" id="statPromedio">--</span>
+                    <span class="resumen-etiqueta">Promedio general</span>
+                </div>
+            </div>
+
+            <div class="acciones-portal">
+                <a href="portal-materias.html" class="btn-detalle">Ver mis materias y calificaciones</a>
+                <a href="portal-datos.html" class="btn-detalle">Ver / editar mis datos</a>
+                <a href="portal-tramites.html" class="btn-detalle">Solicitar un trámite</a>
+            </div>
+
+            <h3 class="detalle-subtitulo">Últimos anuncios</h3>
+            <div id="ultimosAnunciosContenido"></div>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="portal-common.js"></script>
+    <script src="portal-alumno.js"></script>
+
+</body>
+</html>

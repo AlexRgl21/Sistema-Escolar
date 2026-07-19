@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Anuncio · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Gestión de Alumnos</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="index.html" class="navbar-link">Alumnos</a>
+            <a href="administradores.html" class="navbar-link">Administradores</a>
+            <a href="periodos.html" class="navbar-link">Periodos</a>
+            <a href="materias.html" class="navbar-link">Materias</a>
+            <a href="anuncios.html" class="navbar-link is-active">Anuncios</a>
+            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="detalle-card">
+
+            <a href="anuncios.html" class="volver-link">← Volver a la lista</a>
+
+            <div id="estadoCarga" class="detalle-cargando">Cargando información del anuncio…</div>
+
+            <div id="estadoNoEncontrado" class="detalle-error" hidden>
+                No se encontró ningún anuncio con ese ID.
+            </div>
+
+            <div id="contenidoAnuncio" hidden>
+
+                <p class="detalle-id">ID de anuncio: <span id="idAnuncioTexto"></span></p>
+                <h2 id="tituloAnuncioTexto" class="detalle-nombre"></h2>
+                <p class="detalle-correo" id="metaAnuncio"></p>
+
+                <h3 class="detalle-subtitulo">Editar anuncio</h3>
+
+                <form id="formEditarAnuncio">
+
+                    <div class="input-group">
+                        <label for="editTitulo">Título</label>
+                        <input type="text" id="editTitulo" maxlength="120" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="editContenido">Contenido</label>
+                        <textarea id="editContenido" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-acciones">
+                        <button type="submit" class="btn-guardar">Guardar cambios</button>
+                    </div>
+
+                    <div id="mensajeGuardado" class="mensaje-exito"></div>
+                    <div id="mensajeErrorEdit" class="mensaje-error"></div>
+
+                </form>
+
+                <div class="zona-peligro">
+                    <div>
+                        <strong>Eliminar anuncio</strong>
+                        <p>Esta acción no se puede deshacer. Dejará de verse en el portal de los alumnos.</p>
+                    </div>
+                    <button type="button" id="btnEliminar" class="btn-eliminar">Eliminar anuncio</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="anuncio.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios · Gestión de Alumnos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <span>Portal del Alumno</span>
+        </div>
+        <div class="navbar-menu">
+            <a href="portal-alumno.html" class="navbar-link">Inicio</a>
+            <a href="portal-materias.html" class="navbar-link">Mis materias</a>
+            <a href="portal-datos.html" class="navbar-link">Mis datos</a>
+            <a href="portal-anuncios.html" class="navbar-link is-active">Anuncios</a>
+            <a href="portal-tramites.html" class="navbar-link">Trámites</a>
+            <span id="navUserGreeting" class="navbar-greeting"></span>
+            <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
+        </div>
+    </nav>
+
+    <main class="page-content">
+
+        <div class="detalle-card">
+
+            <h2 class="detalle-nombre">Anuncios</h2>
+            <p class="detalle-correo">Avisos publicados por la administración de la escuela.</p>
+
+            <div id="estadoCargaAnuncios" class="detalle-cargando">Cargando anuncios…</div>
+
+            <div id="anunciosContenido"></div>
+
+        </div>
+
+    </main>
+
+    <script src="common.js"></script>
+    <script src="portal-common.js"></script>
+    <script src="portal-anuncios.js"></script>
+
+</body>
+</html>
