@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/tramitescontrollers');
+const controller = require('../controllers/tramites.controller');
 
 router.get('/', controller.obtenertramites);
 router.get('/:id', controller.obtenertramite);

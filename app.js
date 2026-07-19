@@ -27,9 +27,7 @@ app.use('/anuncios', anunciosRoutes);
 app.use('/tramites', tramitesRoutes);
 
 app.get('/', (req, res) => {
-    res.json({
-        mensaje: 'API Gestión Escolar funcionando'
-    });
+    res.redirect('/pages/login.html');
 });
 
 app.listen(3000, () => {

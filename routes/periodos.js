@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/periodoscontrollers');
+const controller = require('../controllers/periodos.controller');
 
 router.get('/', controller.obtenerperiodos);
 router.get('/:id', controller.obtenerperiodo);

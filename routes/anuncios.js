@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/anunciocontrollers');
+const controller = require('../controllers/anuncio.controller');
 
 router.get('/', controller.obteneranuncios);
 router.get('/:id', controller.obteneranuncio);

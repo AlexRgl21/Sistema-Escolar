@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores · Gestión de Alumnos</title>
+    <title>Periodos · Gestión de Alumnos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="app-body">
 
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <img src="/assets/logo-icon.png" alt="" class="navbar-logo">
             <span>Gestión de Alumnos</span>
         </div>
         <div class="navbar-menu">
-            <a href="index.html" class="navbar-link">Alumnos</a>
-            <a href="administradores.html" class="navbar-link is-active">Administradores</a>
-            <a href="periodos.html" class="navbar-link">Periodos</a>
-            <a href="materias.html" class="navbar-link">Materias</a>
-            <a href="anuncios.html" class="navbar-link">Anuncios</a>
-            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <a href="/pages/index.html" class="navbar-link">Alumnos</a>
+            <a href="/pages/administradores.html" class="navbar-link">Administradores</a>
+            <a href="/pages/periodos.html" class="navbar-link is-active">Periodos</a> 
+            <a href="/pages/materias.html" class="navbar-link">Materias</a>
+            <a href="/pages/anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="/pages/tramites.html" class="navbar-link">Trámites</a>
             <span id="navUserGreeting" class="navbar-greeting"></span>
             <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
         </div>
@@ -33,48 +33,36 @@
         <div class="login-container">
 
             <div class="login-header">
-                <h2>Administradores</h2>
-                <p>Registrar un nuevo administrador</p>
+                <h2>Periodos</h2>
+                <p>Registrar un nuevo periodo</p>
             </div>
 
-            <form id="formAdministrador">
+            <form id="formPeriodo">
 
                 <div class="input-group">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre_periodo">Nombre del periodo</label>
                     <input
                         type="text"
-                        id="nombre"
-                        placeholder="Nombre"
+                        id="nombre_periodo"
+                        placeholder="Ej. Enero - Junio 2026"
                         required
                     >
                 </div>
 
                 <div class="input-group">
-                    <label for="apellidos">Apellidos</label>
+                    <label for="fecha_inicio">Fecha de inicio</label>
                     <input
-                        type="text"
-                        id="apellidos"
-                        placeholder="Apellidos"
+                        type="date"
+                        id="fecha_inicio"
                         required
                     >
                 </div>
 
                 <div class="input-group">
-                    <label for="correo">Correo Electrónico</label>
+                    <label for="fecha_fin">Fecha de fin</label>
                     <input
-                        type="text"
-                        id="correo"
-                        placeholder="ejemplo@correo.com"
-                        required
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label for="contrasena">Contraseña</label>
-                    <input
-                        type="text"
-                        id="contrasena"
-                        placeholder="Introduce la contraseña"
+                        type="date"
+                        id="fecha_fin"
                         required
                     >
                 </div>
@@ -86,12 +74,6 @@
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
                     </select>
-                </div>
-
-                <div class="input-group">
-                    <label for="id_rolTexto">Rol</label>
-                    <input type="text" id="id_rolTexto" value="Administrador" readonly disabled>
-                    <input type="hidden" id="id_rol" value="2">
                 </div>
 
                 <button type="submit" class="btn-login">
@@ -108,34 +90,34 @@
         <div class="lista-section">
 
             <div class="lista-header">
-                <h2 class="lista-titulo">Lista de Administradores</h2>
+                <h2 class="lista-titulo">Lista de Periodos</h2>
 
                 <div class="buscador">
                     <span class="buscador-icono">🔍</span>
                     <input
                         type="text"
-                        id="buscarIdAdmin"
+                        id="buscarIdPeriodo"
                         class="buscador-input"
                         placeholder="Buscar por ID..."
                         inputmode="numeric"
                         autocomplete="off"
                     >
-                    <button type="button" id="btnLimpiarBusquedaAdmin" class="buscador-limpiar" hidden aria-label="Limpiar búsqueda">✕</button>
+                    <button type="button" id="btnLimpiarBusquedaPeriodo" class="buscador-limpiar" hidden aria-label="Limpiar búsqueda">✕</button>
                 </div>
             </div>
 
-            <div id="listaAdministradores"></div>
+            <div id="listaPeriodos"></div>
 
-            <p id="sinResultadosBusquedaAdmin" class="sin-resultados" hidden>
-                No se encontró ningún administrador con ese ID.
+            <p id="sinResultadosBusquedaPeriodo" class="sin-resultados" hidden>
+                No se encontró ningún periodo con ese ID.
             </p>
 
         </div>
 
     </main>
 
-    <script src="common.js"></script>
-    <script src="administradores.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/periodos.js"></script>
 
 </body>
 </html>

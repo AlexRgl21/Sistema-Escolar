@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Alumno · Gestión de Alumnos</title>
+    <title>Detalle del Administrador · Gestión de Alumnos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="app-body">
 
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <img src="/assets/logo-icon.png" alt="" class="navbar-logo">
             <span>Gestión de Alumnos</span>
         </div>
         <div class="navbar-menu">
-            <a href="index.html" class="navbar-link is-active">Alumnos</a>
-            <a href="administradores.html" class="navbar-link">Administradores</a>
-            <a href="periodos.html" class="navbar-link">Periodos</a>
-            <a href="materias.html" class="navbar-link">Materias</a>
-            <a href="anuncios.html" class="navbar-link">Anuncios</a>
-            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <a href="/pages/index.html" class="navbar-link">Alumnos</a>
+            <a href="/pages/administradores.html" class="navbar-link is-active">Administradores</a>
+            <a href="/pages/periodos.html" class="navbar-link">Periodos</a>
+            <a href="/pages/materias.html" class="navbar-link">Materias</a>
+            <a href="/pages/anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="/pages/tramites.html" class="navbar-link">Trámites</a>
             <span id="navUserGreeting" class="navbar-greeting"></span>
             <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
         </div>
@@ -32,27 +32,27 @@
 
         <div class="detalle-card">
 
-            <a href="index.html" class="volver-link">← Volver a la lista</a>
+            <a href="/pages/administradores.html" class="volver-link">← Volver a la lista</a>
 
-            <div id="estadoCarga" class="detalle-cargando">Cargando información del alumno…</div>
+            <div id="estadoCarga" class="detalle-cargando">Cargando información del administrador…</div>
 
             <div id="estadoNoEncontrado" class="detalle-error" hidden>
-                No se encontró ningún alumno con ese ID.
+                No se encontró ningún administrador con ese ID.
             </div>
 
-            <div id="contenidoAlumno" hidden>
+            <div id="contenidoAdministrador" hidden>
 
-                <p class="detalle-id">ID de alumno: <span id="idAlumnoTexto"></span></p>
-                <h2 id="tituloAlumno" class="detalle-nombre"></h2>
+                <p class="detalle-id">ID de administrador: <span id="idAdminTexto"></span></p>
+                <h2 id="tituloAdmin" class="detalle-nombre"></h2>
                 <p class="detalle-correo">
-                    <span id="correoAlumno"></span>
+                    <span id="correoAdmin"></span>
                     &nbsp;·&nbsp;
-                    <span id="badgeEstatus" class="badge"></span>
+                    <span id="badgeEstatusAdmin" class="badge"></span>
                 </p>
 
-                <h3 class="detalle-subtitulo">Datos del alumno</h3>
+                <h3 class="detalle-subtitulo">Datos del administrador</h3>
 
-                <form id="formEditar">
+                <form id="formEditarAdmin">
 
                     <div class="input-group">
                         <label for="editNombre">Nombre</label>
@@ -85,8 +85,8 @@
 
                     <div class="input-group">
                         <label for="editIdRolTexto">Rol</label>
-                        <input type="text" id="editIdRolTexto" value="Estudiante" readonly disabled>
-                        <input type="hidden" id="editIdRol" value="1">
+                        <input type="text" id="editIdRolTexto" value="Administrador" readonly disabled>
+                        <input type="hidden" id="editIdRol" value="2">
                     </div>
 
                     <div class="form-acciones">
@@ -100,14 +100,11 @@
 
                 <div class="zona-peligro">
                     <div>
-                        <strong>Eliminar alumno</strong>
-                        <p>Esta acción no se puede deshacer. También se eliminarán sus inscripciones y calificaciones.</p>
+                        <strong>Eliminar administrador</strong>
+                        <p>Esta acción no se puede deshacer.</p>
                     </div>
-                    <button type="button" id="btnEliminar" class="btn-eliminar">Eliminar alumno</button>
+                    <button type="button" id="btnEliminar" class="btn-eliminar">Eliminar administrador</button>
                 </div>
-
-                <h3 class="detalle-subtitulo">Materias inscritas y calificaciones</h3>
-                <div id="academicoContenido"></div>
 
             </div>
 
@@ -115,8 +112,8 @@
 
     </main>
 
-    <script src="common.js"></script>
-    <script src="alumno.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/administrador.js"></script>
 
 </body>
 </html>

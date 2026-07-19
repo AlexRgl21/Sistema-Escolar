@@ -7,22 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="app-body">
 
     <nav class="navbar">
         <div class="navbar-brand">
-            <img src="logo-icon.png" alt="" class="navbar-logo">
+            <img src="/assets/logo-icon.png" alt="" class="navbar-logo">
             <span>Gestión de Alumnos</span>
         </div>
         <div class="navbar-menu">
-            <a href="index.html" class="navbar-link">Alumnos</a>
-            <a href="administradores.html" class="navbar-link">Administradores</a>
-            <a href="periodos.html" class="navbar-link">Periodos</a>
-            <a href="materias.html" class="navbar-link is-active">Materias</a>
-            <a href="anuncios.html" class="navbar-link">Anuncios</a>
-            <a href="tramites.html" class="navbar-link">Trámites</a>
+            <a href="/pages/index.html" class="navbar-link">Alumnos</a>
+            <a href="/pages/administradores.html" class="navbar-link">Administradores</a>
+            <a href="/pages/periodos.html" class="navbar-link">Periodos</a>
+            <a href="/pages/materias.html" class="navbar-link is-active">Materias</a>
+            <a href="/pages/anuncios.html" class="navbar-link">Anuncios</a>
+            <a href="/pages/tramites.html" class="navbar-link">Trámites</a>
             <span id="navUserGreeting" class="navbar-greeting"></span>
             <button type="button" id="btnLogout" class="navbar-logout">Cerrar sesión</button>
         </div>
@@ -32,7 +32,7 @@
 
         <div class="detalle-card">
 
-            <a href="materias.html" class="volver-link">← Volver a la lista</a>
+            <a href="/pages/materias.html" class="volver-link">← Volver a la lista</a>
 
             <div id="estadoCarga" class="detalle-cargando">Cargando información de la materia…</div>
 
@@ -84,8 +84,8 @@
 
     </main>
 
-    <script src="common.js"></script>
-    <script src="materia.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/materia.js"></script>
 
 </body>
 </html>
