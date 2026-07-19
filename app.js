@@ -17,7 +17,9 @@ const inscripcionesRoutes = require('./routes/inscripciones');
 const calificacionesRoutes = require('./routes/calificaciones');
 const anunciosRoutes = require('./routes/anuncios');
 const tramitesRoutes = require('./routes/tramites');
+const authRoutes = require('./routes/auth');
 
+app.use('/auth', authRoutes);
 app.use('/administradores', administradoresRoutes);
 app.use('/alumnos', alumnosRoutes);
 app.use('/periodos', periodosRoutes);

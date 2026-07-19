@@ -27,4 +27,16 @@ const enviarCredenciales = async (correoDestino, nombre, usuario, password) => {
     return await transporter.sendMail(mailOptions);
 };
 
-module.exports = { enviarCredenciales };
+const enviarToken = async (correoDestino, token) => {
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: correoDestino,
+        subject: 'Recuperación de Contraseña - Código de Verificación',
+        html: `<h1>Tu código de recuperación</h1>
+               <p>Tu código de 6 dígitos es: <strong>${token}</strong></p>
+               <p>Este código expira en 10 minutos.</p>`
+    };
+    return await transporter.sendMail(mailOptions);
+};
+
+module.exports = { enviarCredenciales, enviarToken };
