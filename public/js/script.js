@@ -87,11 +87,6 @@ async function cargarEntrenadores() {
                     </p>
 
                     <p>
-                        <strong>Contraseña:</strong>
-                        ${escapeHtml(entrenador.contrasena)}
-                    </p>
-
-                    <p>
                         <strong>Estatus:</strong>
                         ${escapeHtml(entrenador.estatus)}
                     </p>
@@ -143,9 +138,6 @@ formulario.addEventListener(
 
             correo: 
                 document.getElementById('correo').value,
-
-            contrasena: 
-                document.getElementById('contrasena').value,
 
             estatus: 
                 document.getElementById('estatus').value,

@@ -1,4 +1,5 @@
 const db = require('../db');
+const emailService = require('../services/email.service'); 
 
 // OBTENER TODOS
 exports.obteneralumnos = (req, res) => {
@@ -30,36 +31,37 @@ exports.obteneralumno = (req, res) => {
 
 // CREAR
 // Nota: id_alumno es AUTO_INCREMENT, no se debe enviar desde el front.
+const generarContrasenaAleatoria = () => {
+    return Math.random().toString(36).slice(-8); 
+};
+
 exports.crearalumno = (req, res) => {
-    const {
-        nombre,
-        apellidos,
-        correo,
-        contrasena,
-        estatus,
-        id_rol
-    } = req.body;
+    const { nombre, apellidos, correo, estatus, id_rol } = req.body;
+    
+    // contraseña automatica
+    const contrasenaGenerada = generarContrasenaAleatoria(); 
 
-    const sql = `
-        INSERT INTO alumnos
-        (nombre, apellidos, correo, contrasena, estatus, id_rol)
-        VALUES (?, ?, ?, ?, ?, ?)
-    `;
+    const sql = `INSERT INTO alumnos (nombre, apellidos, correo, contrasena, estatus, id_rol) VALUES (?, ?, ?, ?, ?, ?)`;
 
-    db.query(
-        sql,
-        [nombre, apellidos, correo, contrasena, estatus, id_rol || 1],
-        (err, result) => {
-            if (err) {
-                res.status(500).json(err);
-                return;
-            }
+    db.query(sql, [nombre, apellidos, correo, contrasenaGenerada, estatus, id_rol || 1], async (err, result) => {
+        if (err) {
+            res.status(500).json(err);
+            return;
+        }
+
+        try {
+            await emailService.enviarCredenciales(correo, nombre, correo, contrasenaGenerada);
             res.json({
-                mensaje: 'Alumno creado',
+                mensaje: 'Alumno creado y credenciales enviadas por correo',
+                id: result.insertId
+            });
+        } catch (emailError) {
+            res.json({
+                mensaje: 'Alumno creado, pero hubo un error enviando el correo',
                 id: result.insertId
             });
         }
-    );
+    });
 };
 
 // ACTUALIZAR
