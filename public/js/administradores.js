@@ -86,11 +86,6 @@ async function cargarAdministradores() {
                     </p>
 
                     <p>
-                        <strong>Contraseña:</strong>
-                        ${escapeHtml(admin.contrasena)}
-                    </p>
-
-                    <p>
                         <strong>Estatus:</strong>
                         ${escapeHtml(admin.estatus)}
                     </p>
@@ -142,9 +137,6 @@ formulario.addEventListener(
 
             correo:
                 document.getElementById('correo').value,
-
-            contrasena:
-                document.getElementById('contrasena').value,
 
             estatus:
                 document.getElementById('estatus').value,

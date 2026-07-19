@@ -35,36 +35,31 @@ exports.obtenerunadministrador = (req, res) => {
 };
 
 // CREAR
-exports.crearadministrador = (req, res) => {
-    const {
-        nombre,
-        apellidos,
-        correo,
-        contrasena,
-        estatus,
-        id_rol
-    } = req.body;
+const emailService = require('../services/email.service');
 
-    const sql = `
-        INSERT INTO administradores
-        (nombre, apellidos, correo, contrasena, estatus, id_rol)
-        VALUES (?, ?, ?, ?, ?, ?)
-    `;
+const generarContrasenaAleatoria = () => {
+    return Math.random().toString(36).slice(-8); 
+};
 
-    db.query(
-        sql,
-        [nombre, apellidos, correo, contrasena, estatus, id_rol || 2],
-        (err, result) => {
-            if (err) {
-                res.status(500).json(err);
-                return;
-            }
-            res.json({
-                mensaje: 'Administrador creado',
-                id: result.insertId
-            });
+exports.crearadministrador = async (req, res) => {
+    const { nombre, apellidos, correo, estatus, id_rol } = req.body;
+    const contrasenaGenerada = generarContrasenaAleatoria(); 
+
+    const sql = `INSERT INTO administradores (nombre, apellidos, correo, contrasena, estatus, id_rol) VALUES (?, ?, ?, ?, ?, ?)`;
+
+    db.query(sql, [nombre, apellidos, correo, contrasenaGenerada, estatus, id_rol || 2], async (err, result) => {
+        if (err) {
+            res.status(500).json(err);
+            return;
         }
-    );
+
+        try {
+            await emailService.enviarCredenciales(correo, nombre, correo, contrasenaGenerada);
+            res.json({ mensaje: 'Administrador creado y credenciales enviadas', id: result.insertId });
+        } catch (emailError) {
+            res.json({ mensaje: 'Administrador creado, pero error al enviar correo', id: result.insertId });
+        }
+    });
 };
 
 // ACTUALIZAR
