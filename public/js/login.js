@@ -85,16 +85,37 @@ document.getElementById('btnVolverLogin').addEventListener('click', (e) => {
     document.getElementById('paso3').style.display = 'none';
 });
 
+
+let tablaRecuperacion = "alumnos"; 
+
 async function solicitarCodigo() {
-    correoRecuperacion = document.getElementById('correoRecup').value;
-    const res = await fetch('/auth/solicitar-codigo', {
+
+    correoRecuperacion = document.getElementById('correoRecup').value.trim();
+
+    let res = await fetch('/auth/solicitar-codigo', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ correo: correoRecuperacion, tabla: 'alumnos' }) // Ajusta la tabla si es admin
+        body: JSON.stringify({ correo: correoRecuperacion, tabla: 'alumnos' })
     });
+    tablaRecuperacion = 'alumnos';
+
+    // si el correo no existe error 404
+    if (res.status === 404) {
+        res = await fetch('/auth/solicitar-codigo', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ correo: correoRecuperacion, tabla: 'administradores' })
+        });
+        tablaRecuperacion = 'administradores';
+    }
+
+
     if (res.ok) {
         document.getElementById('paso1').style.display = 'none';
         document.getElementById('paso2').style.display = 'block';
+    } else {
+        const data = await res.json();
+        alert(data.mensaje); 
     }
 }
 
@@ -105,10 +126,13 @@ async function verificarCodigo() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ correo: correoRecuperacion, token })
     });
+    
     if (res.ok) {
         document.getElementById('paso2').style.display = 'none';
         document.getElementById('paso3').style.display = 'block';
-    } else alert("Código inválido");
+    } else {
+        alert("Código inválido o expirado");
+    }
 }
 
 async function actualizarPassword() {
@@ -116,10 +140,13 @@ async function actualizarPassword() {
     const res = await fetch('/auth/actualizar-password', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ correo: correoRecuperacion, nuevaPass, tabla: 'alumnos' })
+        body: JSON.stringify({ correo: correoRecuperacion, nuevaPass, tabla: tablaRecuperacion }) 
     });
+    
     if (res.ok) {
         alert("Contraseña actualizada correctamente");
         location.reload();
+    } else {
+        alert("Error al actualizar la contraseña");
     }
 }
