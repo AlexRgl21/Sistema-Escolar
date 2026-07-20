@@ -5,10 +5,33 @@
 const lista = document.getElementById('listaMaterias');
 const formulario = document.getElementById('formMateria');
 
+// Nuevas referencias para alternar el formulario
+const btnAñadir = document.getElementById('btnAñadir');
+const contenedorFormulario = document.getElementById('contenedorFormulario');
+
 // Buscador por ID
 const buscarId = document.getElementById('buscarIdMateria');
 const btnLimpiarBusqueda = document.getElementById('btnLimpiarBusquedaMateria');
 const sinResultadosBusqueda = document.getElementById('sinResultadosBusquedaMateria');
+
+
+// =====================================
+// ALTERNAR FORMULARIO
+// =====================================
+
+btnAñadir.addEventListener('click', () => {
+    if (contenedorFormulario.style.display === 'none') {
+        // Mostrar el formulario
+        contenedorFormulario.style.display = 'block';
+        btnAñadir.textContent = '✕ Cancelar registro';
+        btnAñadir.style.backgroundColor = '#6c757d'; // Color gris para cancelar
+    } else {
+        // Ocultar el formulario
+        contenedorFormulario.style.display = 'none';
+        btnAñadir.textContent = '+ Añadir nueva materia';
+        btnAñadir.style.backgroundColor = ''; // Restaura el color original
+    }
+});
 
 
 // =====================================
@@ -146,6 +169,11 @@ formulario.addEventListener(
 
             // Actualiza la lista
             cargarMaterias();
+
+            // Ocultar formulario tras guardar exitosamente
+            contenedorFormulario.style.display = 'none';
+            btnAñadir.textContent = '+ Añadir nueva materia';
+            btnAñadir.style.backgroundColor = '';
 
         } catch(error) {
 

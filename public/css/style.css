@@ -986,3 +986,79 @@ h1, h2, h3, .navbar-brand span, .btn-login, .btn-detalle, .btn-guardar, .btn-eli
         text-align: center;
     }
 }
+
+/* Ocultar elementos sin usar inline styles */
+.oculto {
+    display: none !important;
+}
+
+/* Modificadores de botones */
+.btn-auto {
+    width: auto;
+    padding: 10px 30px;
+}
+
+.btn-secundario {
+    background-color: #6c757d;
+}
+
+.btn-secundario:hover {
+    background-color: #5a6268;
+}
+
+.btn-deshabilitado {
+    opacity: 0.7;
+    cursor: not-allowed !important;
+}
+
+/* Contenedor de acciones superiores (Alineación) */
+.acciones-superiores {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Visualización para campos fijos de solo lectura */
+.texto-bloqueado {
+    padding: 12px;
+    background-color: var(--bg-color);
+    color: var(--text-light);
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+/* Estado de carga */
+.estado-informativo {
+    text-align: center;
+    color: var(--primary-color);
+    padding: 30px 0;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(16, 112, 120, 0.2);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ajustes a los mensajes (Se sobreescribe "display: none" para manejarlo con .oculto) */
+.mensaje-error,
+.mensaje-exito {
+    display: block; /* La clase .oculto maneja la visibilidad ahora */
+    transition: all 0.3s ease;
+}

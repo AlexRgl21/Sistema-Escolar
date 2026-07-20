@@ -30,7 +30,13 @@
 
     <main class="page-content">
 
-        <div class="login-container">
+        <div style="text-align: center; margin-bottom: 20px; padding-top: 20px;">
+            <button type="button" id="btnAñadir" class="btn-login" style="width: auto; padding: 10px 30px;">
+                + Añadir nuevo periodo
+            </button>
+        </div>
+        
+        <div id="contenedorFormulario" class="login-container" style="display: none;">
 
             <div class="login-header">
                 <h2>Periodos</h2>
@@ -80,7 +86,7 @@
                     Guardar
                 </button>
 
-                <div id="mensajeError" class="mensaje-error">
+                <div id="mensajeError" class="mensaje-error" style="display: none;">
                     Hubo un error al procesar la solicitud, intente de nuevo
                 </div>
 

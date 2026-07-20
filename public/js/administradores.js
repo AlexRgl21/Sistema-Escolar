@@ -5,10 +5,33 @@
 const lista = document.getElementById('listaAdministradores');
 const formulario = document.getElementById('formAdministrador');
 
+// Nuevas referencias para alternar el formulario
+const btnAñadir = document.getElementById('btnAñadir');
+const contenedorFormulario = document.getElementById('contenedorFormulario');
+
 // Buscador por ID
 const buscarId = document.getElementById('buscarIdAdmin');
 const btnLimpiarBusqueda = document.getElementById('btnLimpiarBusquedaAdmin');
 const sinResultadosBusqueda = document.getElementById('sinResultadosBusquedaAdmin');
+
+
+// =====================================
+// ALTERNAR FORMULARIO
+// =====================================
+
+btnAñadir.addEventListener('click', () => {
+    if (contenedorFormulario.style.display === 'none') {
+        // Mostrar el formulario
+        contenedorFormulario.style.display = 'block';
+        btnAñadir.textContent = '✕ Cancelar registro';
+        btnAñadir.style.backgroundColor = '#6c757d'; // Color gris para cancelar
+    } else {
+        // Ocultar el formulario
+        contenedorFormulario.style.display = 'none';
+        btnAñadir.textContent = '+ Añadir nuevo administrador';
+        btnAñadir.style.backgroundColor = ''; // Restaura el color original
+    }
+});
 
 
 // =====================================
@@ -49,7 +72,6 @@ btnLimpiarBusqueda.addEventListener('click', () => {
 async function cargarAdministradores() {
 
     try {
-
         // Hace una petición GET al backend
         const respuesta = await fetch('/administradores');
 
@@ -108,11 +130,8 @@ async function cargarAdministradores() {
         filtrarPorId(buscarId.value);
 
     } catch(error) {
-
         console.error('Error al cargar administradores:', error);
-
     }
-
 }
 
 
@@ -128,36 +147,21 @@ formulario.addEventListener(
         e.preventDefault();
 
         const administrador = {
-
-            nombre:
-                document.getElementById('nombre').value,
-
-            apellidos:
-                document.getElementById('apellidos').value,
-
-            correo:
-                document.getElementById('correo').value,
-
-            estatus:
-                document.getElementById('estatus').value,
-
-            id_rol:
-                document.getElementById('id_rol').value
+            nombre: document.getElementById('nombre').value,
+            apellidos: document.getElementById('apellidos').value,
+            correo: document.getElementById('correo').value,
+            estatus: document.getElementById('estatus').value,
+            id_rol: document.getElementById('id_rol').value
         };
 
         try {
-
             // Envía los datos al backend
             const respuesta = await fetch('/administradores', {
-
                 method: 'POST',
-
                 headers: {
                     'Content-Type': 'application/json'
                 },
-
                 body: JSON.stringify(administrador)
-
             });
 
             if (!respuesta.ok) {
@@ -170,15 +174,14 @@ formulario.addEventListener(
             // Actualiza la lista
             cargarAdministradores();
 
+            // Ocultar formulario tras guardar exitosamente
+            contenedorFormulario.style.display = 'none';
+            btnAñadir.textContent = '+ Añadir nuevo administrador';
+            btnAñadir.style.backgroundColor = '';
+
         } catch(error) {
-
-            console.error(
-                'Error al guardar administrador:',
-                error
-            );
-
+            console.error('Error al guardar administrador:', error);
         }
-
     }
 );
 

@@ -30,7 +30,13 @@
 
     <main class="page-content">
 
-        <div class="login-container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <button id="btnAñadir" class="btn-login" style="width: auto; padding: 10px 30px;">
+                + Añadir nuevo alumno
+            </button>
+        </div>
+
+        <div id="contenedorFormulario" class="login-container" style="display: none;">
 
             <div class="login-header">
                 <h2>Alumnos</h2>
@@ -41,32 +47,17 @@
 
                 <div class="input-group">
                     <label for="nombre">Nombre</label>
-                    <input
-                        type="text"
-                        id="nombre"
-                        placeholder="Nombre"
-                        required
-                    >
+                    <input type="text" id="nombre" placeholder="Nombre" required>
                 </div>
 
                 <div class="input-group">
                     <label for="apellidos">Apellidos</label>
-                    <input
-                        type="text"
-                        id="apellidos"
-                        placeholder="Apellidos"
-                        required
-                    >
+                    <input type="text" id="apellidos" placeholder="Apellidos" required>
                 </div>
 
                 <div class="input-group">
                     <label for="correo">Correo Electrónico</label>
-                    <input
-                        type="text"
-                        id="correo"
-                        placeholder="ejemplo@correo.com"
-                        required
-                    >
+                    <input type="text" id="correo" placeholder="ejemplo@correo.com" required>
                 </div>
 
                 <input type="hidden" id="estatus" value="Activo">

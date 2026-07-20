@@ -5,10 +5,33 @@
 const lista = document.getElementById('listaPeriodos');
 const formulario = document.getElementById('formPeriodo');
 
+// Nuevas referencias para alternar el formulario
+const btnAñadir = document.getElementById('btnAñadir');
+const contenedorFormulario = document.getElementById('contenedorFormulario');
+
 // Buscador por ID
 const buscarId = document.getElementById('buscarIdPeriodo');
 const btnLimpiarBusqueda = document.getElementById('btnLimpiarBusquedaPeriodo');
 const sinResultadosBusqueda = document.getElementById('sinResultadosBusquedaPeriodo');
+
+
+// =====================================
+// ALTERNAR FORMULARIO
+// =====================================
+
+btnAñadir.addEventListener('click', () => {
+    if (contenedorFormulario.style.display === 'none') {
+        // Mostrar el formulario
+        contenedorFormulario.style.display = 'block';
+        btnAñadir.textContent = '✕ Cancelar registro';
+        btnAñadir.style.backgroundColor = '#6c757d'; // Color gris para cancelar
+    } else {
+        // Ocultar el formulario
+        contenedorFormulario.style.display = 'none';
+        btnAñadir.textContent = '+ Añadir nuevo periodo';
+        btnAñadir.style.backgroundColor = ''; // Restaura el color original
+    }
+});
 
 
 // =====================================
@@ -49,7 +72,6 @@ btnLimpiarBusqueda.addEventListener('click', () => {
 async function cargarPeriodos() {
 
     try {
-
         // Hace una petición GET al backend
         const respuesta = await fetch('/periodos');
 
@@ -106,11 +128,8 @@ async function cargarPeriodos() {
         filtrarPorId(buscarId.value);
 
     } catch(error) {
-
         console.error('Error al cargar periodos:', error);
-
     }
-
 }
 
 
@@ -126,33 +145,20 @@ formulario.addEventListener(
         e.preventDefault();
 
         const periodo = {
-
-            nombre_periodo:
-                document.getElementById('nombre_periodo').value,
-
-            fecha_inicio:
-                document.getElementById('fecha_inicio').value,
-
-            fecha_fin:
-                document.getElementById('fecha_fin').value,
-
-            estatus:
-                document.getElementById('estatus').value
+            nombre_periodo: document.getElementById('nombre_periodo').value,
+            fecha_inicio: document.getElementById('fecha_inicio').value,
+            fecha_fin: document.getElementById('fecha_fin').value,
+            estatus: document.getElementById('estatus').value
         };
 
         try {
-
             // Envía los datos al backend
             const respuesta = await fetch('/periodos', {
-
                 method: 'POST',
-
                 headers: {
                     'Content-Type': 'application/json'
                 },
-
                 body: JSON.stringify(periodo)
-
             });
 
             if (!respuesta.ok) {
@@ -165,15 +171,14 @@ formulario.addEventListener(
             // Actualiza la lista
             cargarPeriodos();
 
+            // Ocultar formulario tras guardar exitosamente
+            contenedorFormulario.style.display = 'none';
+            btnAñadir.textContent = '+ Añadir nuevo periodo';
+            btnAñadir.style.backgroundColor = '';
+
         } catch(error) {
-
-            console.error(
-                'Error al guardar periodo:',
-                error
-            );
-
+            console.error('Error al guardar periodo:', error);
         }
-
     }
 );
 
